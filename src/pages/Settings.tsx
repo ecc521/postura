@@ -2,7 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import ExploreContainer from '../components/ExploreContainer';
 import './Settings.css';
 
-const Tab3: React.FC = () => {
+const Settings: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -16,10 +16,10 @@ const Tab3: React.FC = () => {
             <IonTitle size="large">Settings</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 3 page" />
+
       </IonContent>
     </IonPage>
   );
 };
 
-export default Tab3;
+export default Settings;
