@@ -29,8 +29,9 @@ yarn-error.log*
 
 # cordova-res computed images
 resources/ios
-resources/android
+resources/android/icon/*
+resources/android/splash/*
 
 # native app directories
-android
+android/*
 ios
