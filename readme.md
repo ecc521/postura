@@ -9,5 +9,7 @@ Make sure to set flags as required by https://github.com/capacitor-community/blu
 Run 
 ```
 cordova-res ios --skip-config --copy
-cordova-res android --skip-config --copy
+cordova-res android --skip-config --icon-background-source #022145
 ```
+
+May need to change background attribute in ic_launcher_round.xml to point to correct place
