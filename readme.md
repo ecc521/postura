@@ -13,3 +13,5 @@ cordova-res android --skip-config --icon-background-source #022145
 ```
 
 May need to change background attribute in ic_launcher_round.xml to point to correct place
+
+Need to set NSBluetoothAlwaysUsageDescription for iOS (in info.plist)

@@ -138,7 +138,6 @@ const Summary: React.FC = () => {
                   if (!chartArea) {
                     return;
                   }
-                  console.log(chartArea)
                   return createGradient(chartArea.height, 1);
                 },
                 backgroundColor: (context) => {
