@@ -24,7 +24,7 @@ serviceWorkerRegistration.unregister();
 reportWebVitals();
 
 
-; ((async function () {
+;((async function () {
   let vibration;
 
   let sensors = {
@@ -100,7 +100,14 @@ reportWebVitals();
     else { continue; }
 
     // @ts-ignore
-    function callback(value) {
+    function callback(dv : DataView) {
+      let value;
+      if (dv.byteLength === 12) {
+        value = [dv.getFloat32(0, true), dv.getFloat32(4, true), dv.getFloat32(8, true)]
+      }
+      else if (dv.byteLength === 1) {
+        value = dv.getUint8(0)
+      }
       // @ts-ignore
       sensors[sensor].set(Date.now(), value)
     }
