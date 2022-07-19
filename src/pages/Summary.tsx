@@ -194,53 +194,6 @@ const Summary: React.FC = () => {
             </IonCol>
           </IonRow>
         </IonGrid>
-
-
-
-        {/* <IonGrid>
-          <IonRow>
-            <IonCol>
-              <IonCard>
-                <IonCardHeader style={{ textAlign: "center" }}>Accelerometer 1 (m/s^2)</IonCardHeader>
-                <IonCardContent>
-                  <LineChart sensorName="acc1" />
-                </IonCardContent>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard>
-                <IonCardHeader style={{ textAlign: "center" }}>Accelerometer 2 (m/s^2)</IonCardHeader>
-                <IonCardContent>
-                  <LineChart sensorName="acc2" />
-                </IonCardContent>
-              </IonCard>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonCard>
-                <IonCardHeader style={{ textAlign: "center" }}>Gyroscope 1 (degrees/second)</IonCardHeader>
-                <IonCardContent>
-                  <LineChart sensorName="gyro1" />
-                </IonCardContent>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard>
-                <IonCardHeader style={{ textAlign: "center" }}>Flex Sensor 1 (degrees bend)</IonCardHeader>
-                <IonCardContent>
-                  <LineChart sensorName="flex1" />
-                </IonCardContent>
-              </IonCard>
-            </IonCol>
-          </IonRow>
-        </IonGrid> */}
-
-
-
-
-
-
       </IonContent>
     </IonPage>
   );
