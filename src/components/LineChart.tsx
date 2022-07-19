@@ -36,6 +36,9 @@ class LineChart extends Component<IMyProps, IMyState> {
             },
             legend: {
               display: true,
+              labels: {
+                boxWidth: 10,
+              }
           }
           }
         }
