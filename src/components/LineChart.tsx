@@ -18,13 +18,13 @@ class LineChart extends Component<IMyProps, IMyState> {
           //TODO: Consider removing backgroundColor and fill properties. 
           datasets: [{
             label: 'x',
-            borderColor: "#FF0000",
+            borderColor: "#cc0000",
           }, {
             label: 'y',
-            borderColor: "#00FF00",
+            borderColor: "#00cc00",
           }, {
             label: 'z',
-            borderColor: "#0000FF",
+            borderColor: "#0000cc",
           }]
         },
         options: {
