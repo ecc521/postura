@@ -6,7 +6,11 @@ import { alertCircleOutline, closeCircleOutline, checkmarkCircleOutline, checkma
 
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Line } from 'react-chartjs-2'
+
+import LineChart from '../components/LineChart';
+
 ChartJS.register(...registerables);
+
 
 let postureLevels = {
   excellent: 85,
@@ -101,7 +105,7 @@ const Summary: React.FC = () => {
             </IonItem>
             </IonCol>
           </IonRow>
-          <IonRow>
+          {/* <IonRow>
             <IonCol>
               <IonItem button onClick={() => { }} detail>
                 <IonLabel>
@@ -116,7 +120,7 @@ const Summary: React.FC = () => {
                 </IonLabel>
               </IonItem>
             </IonCol>
-          </IonRow>
+          </IonRow> */}
         </IonGrid>
 
         <IonCard>
@@ -131,7 +135,7 @@ const Summary: React.FC = () => {
                 fill: true,
                 borderColor: (context) => {
                   const chart = context.chart;
-                  const {ctx, chartArea} = chart;
+                  const {chartArea} = chart;
           
                   if (!chartArea) {
                     return;
@@ -140,7 +144,7 @@ const Summary: React.FC = () => {
                 },
                 backgroundColor: (context) => {
                   const chart = context.chart;
-                  const {ctx, chartArea} = chart;
+                  const {chartArea} = chart;
           
                   if (!chartArea) {
                     return;
@@ -170,6 +174,73 @@ const Summary: React.FC = () => {
             />
           </IonCardContent>
         </IonCard>
+
+
+        <IonGrid>
+          <IonRow>
+            <IonCol>
+              <LineChart title="Accelerometer 1 (m/s^2)" sensorName="acc1" />
+            </IonCol>
+            <IonCol>
+              <LineChart title="Accelerometer 2 (m/s^2)" sensorName="acc2" />
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <LineChart title="Gyroscope 1 (degrees/second)" sensorName="gyro1" />
+            </IonCol>
+            <IonCol>
+              <LineChart title="Flex Sensor 1 (degrees bend)" sensorName="flex1" />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+
+
+
+        {/* <IonGrid>
+          <IonRow>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader style={{ textAlign: "center" }}>Accelerometer 1 (m/s^2)</IonCardHeader>
+                <IonCardContent>
+                  <LineChart sensorName="acc1" />
+                </IonCardContent>
+              </IonCard>
+            </IonCol>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader style={{ textAlign: "center" }}>Accelerometer 2 (m/s^2)</IonCardHeader>
+                <IonCardContent>
+                  <LineChart sensorName="acc2" />
+                </IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader style={{ textAlign: "center" }}>Gyroscope 1 (degrees/second)</IonCardHeader>
+                <IonCardContent>
+                  <LineChart sensorName="gyro1" />
+                </IonCardContent>
+              </IonCard>
+            </IonCol>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader style={{ textAlign: "center" }}>Flex Sensor 1 (degrees bend)</IonCardHeader>
+                <IonCardContent>
+                  <LineChart sensorName="flex1" />
+                </IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+        </IonGrid> */}
+
+
+
+
+
+
       </IonContent>
     </IonPage>
   );

@@ -53,7 +53,13 @@ reportWebVitals();
       })
     }
     catch (e) {
-      console.error(e)
+      if (e instanceof DOMException) {
+        //Either user cancelled gesture request or asked for permission before user interacted with page. 
+        //Do nothing. 
+      }
+      else {
+        console.error(e)
+      }
     }
 
     await new Promise((resolve, reject) => {setTimeout(resolve, 100)})
@@ -67,13 +73,13 @@ reportWebVitals();
 
 
   let posturaService = services.find((service) => {
-    return service.uuid == "0cfbadd9-2593-4b4e-9bb6-1a459c706000"
+    return service.uuid === "0cfbadd9-2593-4b4e-9bb6-1a459c706000"
   })
 
   //This should never run as the posturaService uuid should be unique. 
-  if (posturaService == undefined) {
+  if (posturaService === undefined) {
     alert("Device is not a Postura device. ")
-    throw "Boom"
+    throw new Error("Device is not a Postura device. ")
   }
 
   let characteristics = posturaService.characteristics
