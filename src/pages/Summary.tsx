@@ -4,8 +4,6 @@ import {
 import './Summary.css';
 import { alertCircleOutline, closeCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline } from 'ionicons/icons';
 
-// import { Line } from 'react-chartjs-2';
-
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Line } from 'react-chartjs-2'
 ChartJS.register(...registerables);
