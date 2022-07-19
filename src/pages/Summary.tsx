@@ -90,7 +90,7 @@ const Summary: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Daily Summary</IonTitle>
+          <IonTitle>Live Data</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
