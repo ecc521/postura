@@ -93,7 +93,7 @@ class PostureChart extends Component<IMyProps, IMyState> {
                 //ie, if batch size is 64 evaluate every 32 points (using half overlapping batches)
     
     
-                console.time("DataParsing")
+                // console.time("DataParsing")
     
                 //Now we must parse the data and run the model evaluations. 
                 //Output rows of CSV. 
@@ -152,7 +152,7 @@ class PostureChart extends Component<IMyProps, IMyState> {
     
     
                 }
-               console.timeEnd("DataParsing")
+            //    console.timeEnd("DataParsing")
     
                 //We should start at the first item not in graphPoints. 
                 //If an item in graphPoints does not exist in the output array, delete it. 
@@ -204,6 +204,9 @@ class PostureChart extends Component<IMyProps, IMyState> {
 
                     let datasets = chart.data.datasets
                     for (let i=0;i<datasets.length;i++) {
+                        //TODO: We only return value. Make sure to return timestamp as well, else this renders as a timeseries???
+                        //Check this. 
+                        //We probably need a time library for chartjs to get the correct labelling at the same time as the correct time-based spacing. 
                       datasets[i].data = predictions.map((prediction) => {
                         //Odds of good posture: Sum of confidence in each good posture item. 
                         let sum = prediction[2] + prediction[3] + prediction[5];

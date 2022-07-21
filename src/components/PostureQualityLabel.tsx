@@ -22,7 +22,9 @@ class PostureQualityLabel extends Component<IMyProps, IMyState> {
 
         setInterval(() => {
           this.state.postureQuality = window.lastEvaluations[window.lastEvaluations.length - 1]
-          this.forceUpdate()
+          if (this.state.postureQuality !== undefined) {
+            this.forceUpdate()
+          }
         }, 250); 
     }
 

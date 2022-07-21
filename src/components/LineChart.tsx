@@ -90,6 +90,7 @@ class LineChart extends Component<IMyProps, IMyState> {
         let data = values.map((arr) => {
           //TODO: We only return value. Make sure to return timestamp as well, else this renders as a timeseries???
           //Check this. 
+          //We probably need a time library for chartjs to get the correct labelling at the same time as the correct time-based spacing. 
             return arr[i]
         })
         datasets[i].data = data
