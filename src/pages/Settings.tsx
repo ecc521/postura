@@ -5,7 +5,6 @@ import {
   IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCheckbox, IonDatetime, IonInput, IonNote, IonRange, IonSelect, IonSelectOption, IonToggle, IonCol, IonGrid, IonRow } from '@ionic/react';
   import { close, pin, heart, closeCircle, checkmarkCircle, home, informationCircle, navigate, shuffle, star } from 'ionicons/icons';
 
-  import ExploreContainer from '../components/ExploreContainer';
 import './Settings.css';
 
 const Settings: React.FC = () => {
@@ -18,16 +17,6 @@ const Settings: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
 
-
-
-
-
-
-
-
-
-
-      <ExploreContainer name="Tab 1 page" />
         <IonGrid>
         <IonRow>
           <IonCol col-6>

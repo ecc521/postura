@@ -24,6 +24,15 @@ serviceWorkerRegistration.unregister();
 reportWebVitals();
 
 
+
+
+
+//NOTE: 
+//Right now, the sensors maps will continue growing endlessly once data collection starts. 
+//We will prevent this by deleting all data older than some age. 
+//Old data cleanup will occur whenever new data is added for that sensor. 
+let maxDataAge = 1000 * 60 * 3
+
 ;((async function () {
   let vibration;
 
@@ -114,8 +123,31 @@ reportWebVitals();
       else if (dv.byteLength === 1) {
         value = dv.getUint8(0)
       }
-      // @ts-ignore
-      sensors[sensor].set(Date.now(), value)
+
+      //@ts-ignore
+      let sensorMap = sensors[sensor]
+
+      sensorMap.set(Date.now(), value)
+
+      //Delete old data for this sensor. 
+      //NOTE: This code relies on insertion order iteration to improve performance. 
+      let iterator = sensorMap.keys()
+      let item = iterator.next()
+      while (true) {
+          if (item.done) {
+              break;
+          }
+          let timestamp = item.value
+
+          if (Date.now() - timestamp > maxDataAge) {
+            sensorMap.delete(item.value)
+          }
+          else {
+            //The values are now newer than maxDataAge. Stop iterating. 
+            break
+          }
+          item = iterator.next()
+      }
     }
 
     BleClient.startNotifications(device.deviceId, posturaService.uuid, characteristic.uuid, callback)

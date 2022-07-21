@@ -50,26 +50,35 @@ class LineChart extends Component<IMyProps, IMyState> {
       if (!chart) {return}
 
       let map = window.sensors[props.sensorName]
-      let labels = Array.from(map.keys())
 
-      //Delete all data more than maxAge milliseconds old. 
-      let maxAge = 1000 * 10
-      labels = labels.filter((timestamp) => {
+      let labels = []
+      let values = []
+
+      let maxAge = 1000 * 10 //Use maxAge milliseconds of data. 
+      let minInterval = 500 //Require at least minInterval milliseconds between displayed points (greatly reduces animation CPU costs)
+
+      let previousTimestamp;
+      for (let timestamp of map.keys()) {
         if (Date.now() - timestamp > maxAge) {
-          map.delete(timestamp)
-          return false
+          //Value too old. 
+          continue;
         }
-        return true
-      })
+        else if (timestamp - previousTimestamp < minInterval) {
+          //Value too close to previous value. 
+          //TODO: Never drop the most recent value. 
+          continue;
+        }
 
+        previousTimestamp = timestamp
+        labels.push(timestamp)
+        let value = map.get(timestamp)
 
+        //Reformat value to an array (makes it easier to correspond into datasets)
+        if (!(value instanceof Array)) {
+          value = [value]
+        }
 
-      let values = Array.from(map.values())
-
-      //We will convert all values to arrays then map to the corresponding dataset. 
-      for (let i=0;i<values.length;i++) {
-        if (values[i] instanceof Array) {}
-        else {values[i] = [values[i]]}
+        values.push(value)
       }
 
       if (values?.[0]?.length === 1) {
@@ -79,6 +88,8 @@ class LineChart extends Component<IMyProps, IMyState> {
       let datasets = chart.data.datasets
       for (let i=0;i<datasets.length;i++) {
         let data = values.map((arr) => {
+          //TODO: We only return value. Make sure to return timestamp as well, else this renders as a timeseries???
+          //Check this. 
             return arr[i]
         })
         datasets[i].data = data

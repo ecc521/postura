@@ -47,7 +47,7 @@ const App: React.FC = () => (
           <Route exact path="/details">
             <Details />
           </Route>
-          <Route path="/settings">
+          <Route exact path="/settings">
             <Settings />
           </Route>
           <Route exact path="/">
