@@ -74,5 +74,5 @@
   "devDependencies": {
     "@capacitor/cli": "3.6.0"
   },
-  "description": "An Ionic project"
+  "description": "An application for monitoring, detecting, and alerting about defeciencies in posture. "
 }
