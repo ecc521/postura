@@ -10,15 +10,13 @@ import { getPostureQualityDetails } from 'postureQualityRendering';
 
 import LineChart from '../components/LineChart';
 import PostureChart from '../components/PostureChart';
+import PostureQualityLabel from 'components/PostureQualityLabel';
 
 import postureQuality from "../tf"
 //@ts-ignore
 window.postureQuality = postureQuality
 
 ChartJS.register(...registerables);
-
-let postureLevel = 80
-
 
 
 const Summary: React.FC = () => {
@@ -33,12 +31,13 @@ const Summary: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonItem>
-              <IonLabel style={{color: getPostureQualityDetails(postureLevel).color}} id="percentagePostureMeter">
-                {getPostureQualityDetails(postureLevel).description} Posture ({postureLevel}/100)
+              <PostureQualityLabel />
+              {/* <IonItem>
+              <IonLabel style={{color: getPostureQualityDetails(undefined).color}} id="percentagePostureMeter">
+                {getPostureQualityDetails(undefined).description} Posture ({"??"}/100)
               </IonLabel>
-              <IonIcon style={{color: getPostureQualityDetails(postureLevel).color}} icon={getPostureQualityDetails(postureLevel).icon} size="large" slot="end" />
-            </IonItem>
+              <IonIcon style={{color: getPostureQualityDetails(undefined).color}} icon={getPostureQualityDetails(undefined).icon} size="large" slot="end" />
+            </IonItem> */}
             </IonCol>
           </IonRow>
           {/* <IonRow>

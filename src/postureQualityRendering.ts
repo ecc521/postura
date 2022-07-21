@@ -1,4 +1,4 @@
-import { alertCircleOutline, closeCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline } from 'ionicons/icons';
+import { alertCircleOutline, closeCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline, removeCircleOutline } from 'ionicons/icons';
 
 let postureLevels = {
     excellent: 85,
@@ -9,11 +9,18 @@ let postureLevels = {
   
   //Posture quality is measured on a 0-100 scale.
   
-  function getPostureQualityDetails(postureQuality : number) : {color: string, description: string, icon: string} {
+  function getPostureQualityDetails(postureQuality : number | undefined) : {color: string, description: string, icon: string} {
     let obj : {color: string, description: string, icon: string} = {
       color: "",
       description: "",
       icon: ""
+    }
+
+    if (postureQuality === undefined) {
+        obj.color = "#888888"
+        obj.description = "Unknown"
+        obj.icon = removeCircleOutline
+        return obj
     }
   
     //Hue component of HSL colors ranges from 0 to 120.

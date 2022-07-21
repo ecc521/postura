@@ -5,24 +5,22 @@
 
 import getPostureQualityModel from "tf"
 
-// import * as tf from "@tensorflow/tfjs"
-
 import { tensor } from '@tensorflow/tfjs';
 
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2'
 
 import { createGradient } from 'postureQualityRendering';
-// window.tf = tf
 
 let postureQualityModel;
 
 //Key: unix timestamp
 //Value: model evaluation
 let graphPoints = new Map()
+window.lastEvaluations = []
 
 class PostureChart extends Component<IMyProps, IMyState> {
-    constructor(props: { label: string, sensorName: string }) {
+    constructor(props) {
         super(props);
 
         //props.sensorName //Sensor key in window.sensors 
@@ -211,8 +209,7 @@ class PostureChart extends Component<IMyProps, IMyState> {
                         let sum = prediction[2] + prediction[3] + prediction[5];
                         return sum * 100 //multiply by 100 for posture quality index. 
                       })
-
-                      console.log(datasets[i].data)
+                      window.lastEvaluations = datasets[i].data
                     }
       
                     let formattedLabels = labels.map((label) => {
