@@ -90,7 +90,10 @@ class PostureChart extends Component<IMyProps, IMyState> {
     
     
                 let dataPointsPerBatch = 64 //TODO: We could always do interim batches. 
-                //ie, if batch size is 64 evaluate every 32 points (using half overlapping batches)
+
+                let subBatchRatio = 2 //subBatchRatio sub-batches will be created per full batch. 
+                //dataPointsPerBatch should be evenly divisible by subBatchRatio (though it may work even if it isn't)
+                //With subBatchRatio=2, half of each batch will overlap the prior. With subBatchRatio=4, 75% will overlap. 
     
     
                 // console.time("DataParsing")
@@ -170,10 +173,10 @@ class PostureChart extends Component<IMyProps, IMyState> {
                     startIndex = 0
                 }
                 else {
-                    startIndex += dataPointsPerBatch
+                    startIndex += dataPointsPerBatch / subBatchRatio
                 }
     
-                for (let i=startIndex;i<outputRows.length - dataPointsPerBatch;i+=dataPointsPerBatch) {
+                for (let i=startIndex;i<outputRows.length - dataPointsPerBatch;i+=dataPointsPerBatch / subBatchRatio) {
                     let tensorLikeArray = []
                     for (let j=i;j<i+dataPointsPerBatch;j++) {
                         let row = outputRows[j]
